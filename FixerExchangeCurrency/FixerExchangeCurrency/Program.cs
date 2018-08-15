@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FixerExchangeCurrency.Services;
 
 namespace FixerExchangeCurrency
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            var service = new FixerApiService();
+            var result = service.GetAsync().GetAwaiter().GetResult();
         }
     }
 }
