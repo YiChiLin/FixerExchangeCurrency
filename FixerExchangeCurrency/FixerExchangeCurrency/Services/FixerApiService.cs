@@ -19,13 +19,13 @@ namespace FixerExchangeCurrency.Services
         public Dictionary<string, decimal> Rates { get; set; }
     }
 
-    public class FixerApiService : IApiService<CurrencyExchageRateApiResponse>
+    public class FixerApiService : ICurrencyExchangeApiService<CurrencyExchageRateApiResponse>
     {
-        public async Task<CurrencyExchageRateApiResponse> GetAsync()
+        public async Task<CurrencyExchageRateApiResponse> GetAsync(string baseCurrency)
         {
             using (var client = new WebClient())
             {
-                var uri = new Uri("http://data.fixer.io/api/latest?access_key=7e36d952945656dca220f2d2210c9dc3");
+                var uri = new Uri("http://data.fixer.io/api/latest?access_key=7e36d952945656dca220f2d2210c9dc3&&base=" + baseCurrency);
                 var response = await client.DownloadDataTaskAsync(uri);
                 var result = Encoding.UTF8.GetString(response);
                 return JsonConvert.DeserializeObject<CurrencyExchageRateApiResponse>(result);

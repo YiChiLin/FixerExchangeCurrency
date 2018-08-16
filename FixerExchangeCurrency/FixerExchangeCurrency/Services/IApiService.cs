@@ -2,8 +2,8 @@
 
 namespace FixerExchangeCurrency.Services
 {
-    public interface IApiService<TOut>
+    public interface ICurrencyExchangeApiService<TOut>
     {
-        Task<TOut> GetAsync();
+        Task<TOut> GetAsync(string baseCurrency);
     }
 }
