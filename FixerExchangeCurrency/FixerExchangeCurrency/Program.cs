@@ -12,16 +12,8 @@ namespace FixerExchangeCurrency
             var service = new ExchangeRateService();
             //service.DownloadExchangeRateDataAsync().GetAwaiter().GetResult();
 
-            try
-            {
-                var result = service.GetExchangeRateAsync(Currency.EUR, new DateRange { StartTime = new DateTime(2018, 7, 11) }).GetAwaiter().GetResult();
-                Console.WriteLine(JsonConvert.SerializeObject(result));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-
+            var result = service.GetExchangeRateAsync(Currency.EUR, new DateRange { StartTime = new DateTime(2018, 7, 11) }).GetAwaiter().GetResult();
+            Console.WriteLine(JsonConvert.SerializeObject(result));
             Console.ReadLine();
         }
     }
