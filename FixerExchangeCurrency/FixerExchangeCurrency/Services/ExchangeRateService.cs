@@ -16,9 +16,15 @@ namespace FixerExchangeCurrency.Services
 
     public class ExchangeRateService : IExchangeRateService
     {
-        private ICurrencyExchangeApiService<CurrencyExchageRateApiResponse> _CurrencyExchangeApi = new FixerApiService();
+        private ICurrencyExchangeApiService<CurrencyExchageRateApiResponse> _CurrencyExchangeApi;
 
-        private ICurrencyExchangeRateRepository _CurrencyExchangeRateRepository = new CurrencyExchangeRateRepository();
+        private ICurrencyExchangeRateRepository _CurrencyExchangeRateRepository;
+
+        public ExchangeRateService(ICurrencyExchangeApiService<CurrencyExchageRateApiResponse> thirdPartyApiService, ICurrencyExchangeRateRepository repository)
+        {
+            _CurrencyExchangeApi = thirdPartyApiService;
+            _CurrencyExchangeRateRepository = repository;
+        }
 
         public async Task DownloadExchangeRateDataAsync()
         {

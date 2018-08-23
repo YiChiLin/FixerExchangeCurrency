@@ -33,7 +33,7 @@ namespace FixerExchangeCurrency.Repositories
 
         private DbConnection GetDbConnection()
         {
-            return new MySqlConnection("Database=localdb;Data Source=localhost;User Id=root;Password=root");
+            return new MySqlConnection("Database=mylocal;Data Source=127.0.0.1;User Id=root;Password=rootroot");
         }
     }
 }
